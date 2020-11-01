@@ -15,6 +15,7 @@
     "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
+    "@babel/plugin-transform-spread": "^7.12.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "dotenv-webpack": "^5.0.0",
     "express": "^4.17.1",
