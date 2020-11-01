@@ -1,0 +1,43 @@
+/* ============================================
+================= IMPORTS =================
+============================================ */
+@import "./settings";
+@import "./functions";
+@import "./mixins/generic-mixins";
+/* ============================================
+================= Globals ====================
+============================================ */
+
+html {
+  font-size: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+  font-weight: 700;
+  margin: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary-bg-color;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+p,
+input,
+button,
+span,
+label,
+a {
+  font-family: $txt-font;
+  @include increase-element-size(px-rem(15), $text-sizes, font-size);
+}

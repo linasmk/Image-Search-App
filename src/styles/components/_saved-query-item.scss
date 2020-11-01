@@ -1,0 +1,42 @@
+/* ====================================
+============ SAVE QUERY ITEM =========
+======================================= */
+
+.saved-queries__item {
+  width: auto;
+  height: auto;
+  margin: px-rem(5) px-rem(10);
+  padding: px-rem(2) px-rem(10);
+  @include h-flex(space-between, center);
+  background-color: rgba($list-items-bg-color, 0.6);
+
+  animation: slidein-from-right 0.5s;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+  &:hover {
+    background-color: rgba($list-items-bg-color, 1);
+  }
+}
+.saved-queries__txt {
+  margin: 0;
+  padding: 0 px-rem(5);
+  color: $list-items-txt-color;
+  font-weight: 200;
+  @include noHighlightAndSelect;
+}
+.saved-queries__btn {
+  @include increase-element-size(
+    px-rem(16),
+    $saved-queries__btn--font-sizes,
+    font-size
+  );
+  @include noHighlightAndSelect;
+  @include btn-strip-default-styles(transparent);
+  color: rgba($strong-orange, 0.5);
+  transition: color 0.4s ease-in-out;
+  margin-top: 3px;
+  &:hover {
+    color: rgba($strong-orange, 1);
+    cursor: pointer;
+  }
+}
