@@ -112,7 +112,7 @@ function handleChildQuery(newQuery) {
         {noResultsError ? <section className="no-results"><h3 className="no-results__warning">Your search keyword "{query}" did not return any results!</h3></section> : images.map((image, index) => <div className="card" key={index}>
         <img
               className="card--image"
-              alt={image.alt_description}
+              alt={image.description}
               src={image.urls.small}
               width="50%"
               height="50%"
