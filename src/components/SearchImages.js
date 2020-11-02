@@ -5,12 +5,10 @@ import Unsplash, { toJson } from "unsplash-js";
 import {cl} from "../utils";
 /* =========== Redux ============== */
 import { connect } from "react-redux";
-import { addSavedQuery, removeSavedQuery } from "../actions/savedQueries";
-import {getSavedQueriesList} from "../selectors/getSavedQueriesList";
+import { addSavedQuery } from "../actions/savedQueries";
 /* ========= Components =============== */
 import SavedQueryItem from "./SavedQueryItem";
 /* ========= Code ============= */
-
 export const SearchImages = (props) => {
   // State hooks
   const [query, setQuery] = useState("");
@@ -21,7 +19,6 @@ export const SearchImages = (props) => {
   const [noResultsError, setNoResultsError] = useState(false);
   const [excessInputError, setExcessInputError] = useState(false);
   const focusOnSearch = useRef(null);
-  // const [loader, setLoader] = useState(false);
   
   const searchPhotos = async (e) => {
       e.preventDefault();
@@ -29,12 +26,12 @@ export const SearchImages = (props) => {
       .photos(query, 1, 6)
       .then(toJson)
       .then((json) => {
-        cl(json.total);
-        setImagesTotal(imagesTotal => json.total);
+        console.log(json.total);
+        setImagesTotal(json.total);
         if(json.results <= 0) {
-          setNoResultsError(noResultsError => true);
+          setNoResultsError(true);
         } else {
-          setNoResultsError(noResultsError => false);
+          setNoResultsError(false);
           setImages(json.results);
           cl(json.results);
         }  
@@ -46,21 +43,21 @@ export const SearchImages = (props) => {
       .photos(query, pageNumber, 6)
       .then(toJson)
       .then((json) => {
-        setImages(images => [...images, ...json.results]);
+        setImages([...images, ...json.results]);
       });
   };
  const handleSubmit = (e) => {
   if(query.length === 0) {
     e.preventDefault();
-    setInputError(inputError => true);
+    setInputError(true);
   } else if(query.length > 50) {
     e.preventDefault();
-    setInputError(inputError => false);
-    setExcessInputError(excessInputError => true);
+    setInputError(false);
+    setExcessInputError(true);
   }
   else {
-    setInputError(inputError => false);
-    setExcessInputError(excessInputError => false);
+    setInputError(false);
+    setExcessInputError(false);
     searchPhotos(e);
     props.addSavedQuery(query);
     // setQuery("");
@@ -82,10 +79,6 @@ function handleChildQuery(newQuery) {
     setQuery(newQuery);
     focusOnSearch.current.focus()
 }
-  
- 
-
-  
   return (
     <article className="search-images">
       <form className="search-form" onSubmit={handleSubmit}>
@@ -112,7 +105,7 @@ function handleChildQuery(newQuery) {
         {noResultsError ? <section className="no-results"><h3 className="no-results__warning">Your search keyword "{query}" did not return any results!</h3></section> : images.map((image, index) => <div className="card" key={index}>
         <img
               className="card--image"
-              alt={image.description}
+              alt={image.alt_description}
               src={image.urls.small}
               width="50%"
               height="50%"
