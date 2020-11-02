@@ -4,5 +4,5 @@ import Unsplash, { toJson } from "unsplash-js";
 =========== ACCESS KEY  ================
 ================================================= */
 export const UnsplashAccessKey = new Unsplash({
-  accessKey: process.env.API_KEY
+  accessKey: "vD2FpYaLbBtQUnN0Rqg_jWXSHtmCcXnZFLZczVaVn_w",
 });
