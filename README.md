@@ -11,7 +11,7 @@ To kick start the project run npm init in order to install the required node mod
 
 - To run it in the development environment, use: npm run dev:server
 
-- To run it in a production mode, use: build:prod
+- To run it in a production mode, use: npm run build:prod
 
 - To run it on express server, use npm start
 
