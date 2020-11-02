@@ -1,6 +1,6 @@
 /* ========= App Dependencies ============= */
 import React, { useEffect, useState, useRef } from "react";
-import { UnsplashAccessKey } from "../store/accessKey";
+import { UnsplashAccessKey } from "../../accessKey";
 import Unsplash, { toJson } from "unsplash-js";
 import { cl } from "../utils";
 /* =========== Redux ============== */
@@ -28,16 +28,14 @@ export const SearchImages = (props) => {
     e.preventDefault();
     setNoResultsError(false);
     UnsplashAccessKey.search
-      .photos(query, 1, 20)
+      .photos(query, 1, 10)
       .then(toJson)
       .then((json) => {
         setTopLoader(false);
-        console.log(json.total);
         setImagesTotal(json.total);
         if (json.results <= 0) {
         } else {
           setImages(json.results);
-          console.log(json.results);
         }
       });
   };
@@ -155,6 +153,7 @@ export const SearchImages = (props) => {
           {images.length > 1 ? " results" : " result"} out of {imagesTotal}
         </p>
         <button
+          display="none"
           style={
             images.length === 0 ? { display: "none" } : { display: "block" }
           }
