@@ -20,6 +20,10 @@ module.exports = (env) => {
           exclude: /node_modules/,
         },
         {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: ["file-loader"],
+        },
+        {
           test: /\.s?css$/,
           use: [
             MiniCssExtractPlugin.loader,

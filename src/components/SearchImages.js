@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { addSavedQuery } from "../actions/savedQueries";
 /* ========= Components =============== */
 import SavedQueryItem from "./SavedQueryItem";
+import Loader from "./Loader";
 /* ========= Code ============= */
 export const SearchImages = (props) => {
   // State hooks
@@ -18,29 +19,30 @@ export const SearchImages = (props) => {
   const [inputError, setInputError] = useState(false);
   const [noResultsError, setNoResultsError] = useState(false);
   const [excessInputError, setExcessInputError] = useState(false);
+  const [loader, setLoader] = useState(false);
   const focusOnSearch = useRef(null);
+
   // Functions
   const searchPhotos = async (e) => {
     e.preventDefault();
+    setNoResultsError(false);
     UnsplashAccessKey.search
       .photos(query, 1, 6)
       .then(toJson)
       .then((json) => {
+        setLoader(false);
         console.log(json.total);
         setImagesTotal(json.total);
         if (json.results <= 0) {
-          setNoResultsError(true);
         } else {
-          setNoResultsError(false);
           setImages(json.results);
           console.log(json.results);
         }
       });
   };
-
   const updatePhotos = async (pageNumber) => {
     UnsplashAccessKey.search
-      .photos(query, pageNumber, 6)
+      .photos(query, pageNumber, 10)
       .then(toJson)
       .then((json) => {
         setImages([...images, ...json.results]);
@@ -57,6 +59,7 @@ export const SearchImages = (props) => {
     } else {
       setInputError(false);
       setExcessInputError(false);
+      setLoader(true);
       searchPhotos(e);
       props.addSavedQuery(query);
     }
@@ -103,7 +106,6 @@ export const SearchImages = (props) => {
             : ""}
         </span>
       </form>
-
       <section className="saved-queries">
         <div className="saved-queries__wrapper">
           {props.savedQueries.map((savedQuery) => (
@@ -116,27 +118,30 @@ export const SearchImages = (props) => {
           ))}
         </div>
       </section>
-
-      <section className="card-list">
-        {noResultsError ? (
-          <section className="no-results">
-            <h3 className="no-results__warning">
-              Your search keyword "{query}" did not return any results!
-            </h3>
-          </section>
-        ) : (
-          images.map((image, index) => (
-            <div className="card" key={index}>
-              <img
-                className="card--image"
-                alt={image.alt_description}
-                src={image.urls.small}
-                width="50%"
-                height="50%"></img>
-            </div>
-          ))
-        )}
-      </section>
+      {loader ? (
+        <Loader />
+      ) : (
+        <section className="card-list">
+          {noResultsError ? (
+            <section className="no-results">
+              <h3 className="no-results__warning">
+                Your search keyword "{query}" did not return any results!
+              </h3>
+            </section>
+          ) : (
+            images.map((image, index) => (
+              <div className="card" key={index}>
+                <img
+                  className="card--image"
+                  alt={image.alt_description}
+                  src={image.urls.small}
+                  width="50%"
+                  height="50%"></img>
+              </div>
+            ))
+          )}
+        </section>
+      )}
       <section className="load-more">
         <p>
           Currently showing <span>{images.length}</span>
@@ -156,7 +161,7 @@ export const SearchImages = (props) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     savedQueries: state.savedQueries,
   };
