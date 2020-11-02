@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SavedQueryItem correctly 1`] = `
+<div
+  className="saved-queries__item"
+>
+  <p
+    className="saved-queries__txt"
+    onClick={[Function]}
+  >
+    dog
+  </p>
+  <button
+    className="saved-queries__btn"
+    onClick={[Function]}
+  >
+    X
+  </button>
+</div>
+`;

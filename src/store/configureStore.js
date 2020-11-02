@@ -1,6 +1,5 @@
 /* ============= Redux  ============= */
 import { createStore, combineReducers } from "redux";
-import filtersReducer from "./filtersReducer";
 import savedQueriesReducer from "../reducers/savedQueriesReducer";
 /* =================================================
 =========== STORE CONFIGURATION ================
@@ -26,7 +25,6 @@ function loadFromLocalStorage() {
 }
 const rootReducer = combineReducers({
   savedQueries: savedQueriesReducer,
-  filters: filtersReducer,
 });
 
 const persistedState = loadFromLocalStorage();
