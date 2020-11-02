@@ -16,3 +16,9 @@ export default (state = savedQueriesReducerDefaultState, action) => {
       return state;
   }
 }
+
+function saveQueries() {
+  return {
+left: "go"
+  }
+}
