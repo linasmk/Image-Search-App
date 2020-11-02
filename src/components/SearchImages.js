@@ -19,7 +19,8 @@ export const SearchImages = (props) => {
   const [inputError, setInputError] = useState(false);
   const [noResultsError, setNoResultsError] = useState(false);
   const [excessInputError, setExcessInputError] = useState(false);
-  const [loader, setLoader] = useState(false);
+  const [topLoader, setTopLoader] = useState(false);
+  const [bottomLoader, setBottomLoader] = useState(false);
   const focusOnSearch = useRef(null);
 
   // Functions
@@ -27,10 +28,10 @@ export const SearchImages = (props) => {
     e.preventDefault();
     setNoResultsError(false);
     UnsplashAccessKey.search
-      .photos(query, 1, 6)
+      .photos(query, 1, 20)
       .then(toJson)
       .then((json) => {
-        setLoader(false);
+        setTopLoader(false);
         console.log(json.total);
         setImagesTotal(json.total);
         if (json.results <= 0) {
@@ -45,6 +46,7 @@ export const SearchImages = (props) => {
       .photos(query, pageNumber, 10)
       .then(toJson)
       .then((json) => {
+        setBottomLoader(false);
         setImages([...images, ...json.results]);
       });
   };
@@ -59,7 +61,7 @@ export const SearchImages = (props) => {
     } else {
       setInputError(false);
       setExcessInputError(false);
-      setLoader(true);
+      setTopLoader(true);
       searchPhotos(e);
       props.addSavedQuery(query);
     }
@@ -71,6 +73,7 @@ export const SearchImages = (props) => {
 
   const loadMore = () => {
     setPageNumber((prevPageNumber) => prevPageNumber + 1);
+    setBottomLoader(true);
   };
 
   function handleChildQuery(newQuery) {
@@ -118,8 +121,8 @@ export const SearchImages = (props) => {
           ))}
         </div>
       </section>
-      {loader ? (
-        <Loader />
+      {topLoader ? (
+        <Loader display="block" />
       ) : (
         <section className="card-list">
           {noResultsError ? (
@@ -142,8 +145,12 @@ export const SearchImages = (props) => {
           )}
         </section>
       )}
+      <Loader bottomLoader={bottomLoader} display="none" />
       <section className="load-more">
-        <p>
+        <p
+          style={
+            images.length === 0 ? { display: "none" } : { display: "block" }
+          }>
           Currently showing <span>{images.length}</span>
           {images.length > 1 ? " results" : " result"} out of {imagesTotal}
         </p>

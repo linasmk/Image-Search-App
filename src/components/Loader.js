@@ -4,7 +4,11 @@ import React from "react";
 const Loader = (props) => {
   return (
     <div className="loader-box">
-      <div className="loader"></div>;
+      <div
+        style={
+          props.bottomLoader ? { display: "block" } : { display: props.display }
+        }
+        className="loader"></div>
     </div>
   );
 };
