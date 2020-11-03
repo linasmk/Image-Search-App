@@ -149,7 +149,9 @@ export const SearchImages = (props) => {
         <div className="load-more__inner-wrapper">
           <p
             style={
-              images.length === 0 ? { display: "none" } : { display: "block" }
+              images.length === 0 || noResultsError
+                ? { display: "none" }
+                : { display: "block" }
             }>
             Currently showing <span>{images.length}</span>
             {images.length > 1 ? " results" : " result"} out of {imagesTotal}
