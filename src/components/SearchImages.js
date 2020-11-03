@@ -34,6 +34,7 @@ export const SearchImages = (props) => {
         setTopLoader(false);
         setImagesTotal(json.total);
         if (json.results <= 0) {
+          setNoResultsError(true);
         } else {
           setImages(json.results);
         }
@@ -126,7 +127,7 @@ export const SearchImages = (props) => {
           {noResultsError ? (
             <section className="no-results">
               <h3 className="no-results__warning">
-                Your search keyword "{query}" did not return any results!
+                Your search keyword did not return any results!
               </h3>
             </section>
           ) : (
@@ -145,23 +146,25 @@ export const SearchImages = (props) => {
       )}
       <Loader bottomLoader={bottomLoader} display="none" />
       <section className="load-more">
-        <p
-          style={
-            images.length === 0 ? { display: "none" } : { display: "block" }
-          }>
-          Currently showing <span>{images.length}</span>
-          {images.length > 1 ? " results" : " result"} out of {imagesTotal}
-        </p>
-        <button
-          display="none"
-          style={
-            images.length === 0 ? { display: "none" } : { display: "block" }
-          }
-          className="load-more__btn"
-          onClick={loadMore}
-          disabled={images.length === imagesTotal ? true : false}>
-          Load more
-        </button>
+        <div className="load-more__inner-wrapper">
+          <p
+            style={
+              images.length === 0 ? { display: "none" } : { display: "block" }
+            }>
+            Currently showing <span>{images.length}</span>
+            {images.length > 1 ? " results" : " result"} out of {imagesTotal}
+          </p>
+          <button
+            display="none"
+            style={
+              images.length === 0 ? { display: "none" } : { display: "block" }
+            }
+            className="load-more__btn"
+            onClick={loadMore}
+            disabled={images.length === imagesTotal ? true : false}>
+            Load more
+          </button>
+        </div>
       </section>
     </article>
   );

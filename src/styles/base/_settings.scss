@@ -50,11 +50,15 @@ $button-font: $syne-tactile;
 /* =============== LISTS ===============
 ========================================== */
 $breakpoints: px-rem(480), px-rem(768), px-rem(1024), px-rem(1400);
+// Font sizes
 $title-font-sizes: px-rem(35), px-rem(40), px-rem(45), px-rem(50);
+$h4-font-sizes: px-rem(20), px-rem(22), px-rem(26), px-rem(28);
 $text-sizes: px-rem(16), px-rem(18), px-rem(20), px-rem(20);
-$container-width-sizes: 90%, 85%, 80%, px-rem(1024);
-$padding-sizes: px-rem(8), px-rem(10), px-rem(12), px-rem(15);
 $saved-queries__btn--font-sizes: px-rem(18), px-rem(20), px-rem(24), px-rem(28);
+// Box sizes
+$container-width-sizes: 90%, 85%, 80%, px-rem(1024);
+$form-elements-padding-sizes: px-rem(10), px-rem(12), px-rem(13), px-rem(15);
+$general-container-margin-sizes: px-rem(20), px-rem(20), px-rem(25), px-rem(30);
 $saved-queries__wrapper--margin-bottom: px-rem(25), px-rem(30), px-rem(40),
   px-rem(50);
 

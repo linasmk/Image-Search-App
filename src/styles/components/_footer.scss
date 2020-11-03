@@ -1,0 +1,18 @@
+/* ============================================
+================= FOOTER =================
+============================================ */
+.footer {
+  width: 100%;
+  height: auto;
+  padding: 5vh 0;
+  @include h-flex(center, center);
+  background-color: $black;
+  color: $white;
+}
+.footer__copyright {
+  @include increase-element-size(px-rem(18), $h4-font-sizes, font-size);
+  font-family: $syne-tactile;
+  text-align: center;
+  letter-spacing: px-rem(2);
+  font-weight: 200;
+}

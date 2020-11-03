@@ -1,3 +1,12 @@
+/* ============================================
+================= SEARCH IMAGES =================
+============================================ */
+.search-images {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .search-form {
   margin: px-rem(10) auto;
   @include v-flex(center, center);
@@ -7,7 +16,11 @@
   width: px-rem(200);
   margin: px-rem(10) 0;
   border: none;
-  @include increase-element-size(px-rem(5), $padding-sizes, padding);
+  @include increase-element-size(
+    px-rem(10),
+    $form-elements-padding-sizes,
+    padding
+  );
   &:focus {
     outline: none;
   }
@@ -20,7 +33,11 @@
   color: $btn-txt-color;
   border: none;
   cursor: pointer;
-  @include increase-element-size(px-rem(5), $padding-sizes, padding);
+  @include increase-element-size(
+    px-rem(10),
+    $form-elements-padding-sizes,
+    padding
+  );
   @include noHighlightAndSelect;
   transition: background-color 0.4s ease-in;
   &:focus {
@@ -36,19 +53,21 @@
   color: $light-red;
   animation: element-pop-up 0.5s ease-in-out;
 }
-.saved-queries {
-  @include increase-element-size(
-    px-rem(20),
-    $saved-queries__wrapper--margin-bottom,
-    margin-bottom
-  );
-}
+
 .saved-queries__wrapper {
   @include increase-element-size(95%, $container-width-sizes, width);
   margin: 0 auto;
   @include h-flex(flex-start, center);
   flex-wrap: wrap;
   overflow: hidden;
+}
+
+.saved-queries {
+  @include increase-element-size(
+    px-rem(20),
+    $saved-queries__wrapper--margin-bottom,
+    margin-bottom
+  );
 }
 
 .card-list {
@@ -65,9 +84,8 @@
   @include v-flex(center, center);
 }
 .no-results__warning {
-  animation: turn-visible-and-scaleup 0.5s ease-in-out 0.5s;
   text-align: center;
-  color: $strong-orange;
+  font-weight: 500;
 }
 .card {
   width: 100%;
@@ -94,8 +112,14 @@
 .load-more {
   @include increase-element-size(95%, $container-width-sizes, width);
   margin: 0 auto;
+}
+.load-more__inner-wrapper {
   @include v-flex(center, center);
-  @include increase-element-size(px-rem(5), $padding-sizes, padding);
+  @include increase-element-size(
+    px-rem(20),
+    $general-container-margin-sizes,
+    margin-bottom
+  );
 }
 .load-more__btn {
   @extend .search-form__button;

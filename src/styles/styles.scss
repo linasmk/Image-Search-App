@@ -6,7 +6,9 @@
 /* ================ Helpers ================== */
 @import "./helpers/animations";
 /* ================ Components ================== */
+@import "./components/image-search-app";
 @import "./components/header";
-@import "./components/app";
+@import "./components/search-images";
 @import "./components/saved-query-item";
 @import "./components/loader";
+@import "./components/footer";

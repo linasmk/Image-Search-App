@@ -2,11 +2,14 @@
 import React from "react";
 /* ========= Components ============= */
 import Header from "./Header";
-import SearchImages from "./SearchImages"
+import SearchImages from "./SearchImages";
+import Footer from "./Footer";
 /* ========= Code ============= */
 const ImageSearchApp = () => (
-  <main role="main" className="main-content">
+  <div className="image-search-app">
     <Header />
     <SearchImages />
-  </main>)
+    <Footer />
+  </div>
+);
 export default ImageSearchApp;
