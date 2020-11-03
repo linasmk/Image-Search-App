@@ -13,7 +13,7 @@
   @include increase-element-size(95%, $container-width-sizes, width);
 }
 .search-form__input {
-  width: px-rem(200);
+  width: 90%;
   margin: px-rem(10) 0;
   border: none;
   @include increase-element-size(
@@ -57,7 +57,7 @@
 .saved-queries__wrapper {
   @include increase-element-size(95%, $container-width-sizes, width);
   margin: 0 auto;
-  @include h-flex(flex-start, center);
+  @include h-flex(space-evenly, center);
   flex-wrap: wrap;
   overflow: hidden;
 }
@@ -132,6 +132,11 @@
 /* ============================================
 ================= MEDIA QUERIES =================
 ============================================ */
+@media (min-width: px-rem(480)) {
+  .search-form__input {
+    width: 70%;
+  }
+}
 @media (min-width: px-rem(768)) {
   .search-form {
     @include h-flex(center, center);
