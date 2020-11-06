@@ -6,6 +6,8 @@ import { cl } from "../utils";
 /* =========== Redux ============== */
 import { connect } from "react-redux";
 import { addSavedQuery } from "../actions/savedQueries";
+import recentQueryFirst from "../selectors/recentQueryFirst";
+
 /* ========= Components =============== */
 import SavedQueryItem from "./SavedQueryItem";
 import Loader from "./Loader";
@@ -37,6 +39,7 @@ export const SearchImages = (props) => {
           setNoResultsError(true);
         } else {
           setImages(json.results);
+          cl(json.results);
         }
       });
   };
@@ -47,6 +50,7 @@ export const SearchImages = (props) => {
       .then((json) => {
         setBottomLoader(false);
         setImages([...images, ...json.results]);
+        cl(...json.results);
       });
   };
   const handleSubmit = (e) => {
@@ -172,9 +176,11 @@ export const SearchImages = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+  let compareProps = ["name"];
   return {
-    savedQueries: state.savedQueries,
+    //savedQueries: state.savedQueries,
+    savedQueries: recentQueryFirst(state.savedQueries, compareProps),
   };
 };
 const mapDispatchToProps = (dispatch) => ({

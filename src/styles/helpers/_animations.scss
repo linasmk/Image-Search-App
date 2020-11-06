@@ -13,7 +13,7 @@
 
 @keyframes slidein-from-right {
   from {
-    transform: translateX(1000%);
+    transform: translateX(-1000%);
   }
   to {
     transform: translateX(0);
