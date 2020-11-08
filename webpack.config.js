@@ -1,6 +1,7 @@
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const API_KEY = ""
 
 module.exports = (env) => {
   const isProduction = env === "production";
