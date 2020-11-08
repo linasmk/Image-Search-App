@@ -1,7 +1,6 @@
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const API_KEY = ""
 
 module.exports = (env) => {
   const isProduction = env === "production";
@@ -47,21 +46,10 @@ module.exports = (env) => {
     node: {
       fs: "empty",
     },
-    plugins: [
-      new Dotenv({
-        "process.env": {
-          API_KEY: JSON.stringify(process.env.API_KEY),
-        },
-      }),
-      CSSExtract,
-    ],
+    plugins: [new Dotenv(), CSSExtract],
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
       contentBase: path.join(__dirname, "public"),
-      /* historyApiFallback tells the dev-server that the routing 
-    is handled via client-side code and that it should return index.html for
-    all 404 routes. */
-      historyApiFallback: true,
       publicPath: "/dist/",
     },
   };
