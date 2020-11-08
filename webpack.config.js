@@ -46,14 +46,7 @@ module.exports = (env) => {
     node: {
       fs: "empty",
     },
-    plugins: [
-      new Dotenv({
-        "process.env": {
-          API_KEY: JSON.stringify(process.env.API_KEY),
-        },
-      }),
-      CSSExtract,
-    ],
+    plugins: [new Dotenv(), CSSExtract],
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
       contentBase: path.join(__dirname, "public"),
