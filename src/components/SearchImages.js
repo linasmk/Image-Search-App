@@ -6,7 +6,7 @@ import { cl } from "../utils";
 /* =========== Redux ============== */
 import { connect } from "react-redux";
 import { addSavedQuery } from "../actions/savedQueries";
-import recentQueryFirst from "../selectors/recentQueryFirst";
+import latestQueryFirst from "../selectors/latestQueryFirst";
 
 /* ========= Components =============== */
 import SavedQueryItem from "./SavedQueryItem";
@@ -174,13 +174,9 @@ export const SearchImages = (props) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  let compareProps = ["name"];
-  return {
-    //savedQueries: state.savedQueries,
-    savedQueries: recentQueryFirst(state.savedQueries, compareProps),
-  };
-};
+const mapStateToProps = (state) => ({
+  savedQueries: latestQueryFirst(state.savedQueries),
+});
 const mapDispatchToProps = (dispatch) => ({
   addSavedQuery: (name) => dispatch(addSavedQuery({ name })),
 });
