@@ -112,14 +112,16 @@ export const SearchImages = (props) => {
       </form>
       <section className="saved-queries">
         <div className="saved-queries__wrapper">
-          {props.savedQueries.map((savedQuery) => (
-            <SavedQueryItem
-              key={savedQuery.id}
-              query={query}
-              onClick={handleChildQuery}
-              {...savedQuery}
-            />
-          ))}
+          {props.savedQueries
+            .map((savedQuery) => (
+              <SavedQueryItem
+                key={savedQuery.id}
+                query={query}
+                onClick={handleChildQuery}
+                {...savedQuery}
+              />
+            ))
+            .slice(0, 10)}
         </div>
       </section>
       {topLoader ? (
