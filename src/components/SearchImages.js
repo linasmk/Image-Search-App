@@ -39,7 +39,6 @@ export const SearchImages = (props) => {
           setNoResultsError(true);
         } else {
           setImages(json.results);
-          cl(json.results);
         }
       });
   };
@@ -50,7 +49,6 @@ export const SearchImages = (props) => {
       .then((json) => {
         setBottomLoader(false);
         setImages([...images, ...json.results]);
-        cl(...json.results);
       });
   };
   const handleSubmit = (e) => {
