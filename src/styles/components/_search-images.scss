@@ -12,9 +12,14 @@
   @include v-flex(center, center);
   @include increase-element-size(95%, $container-width-sizes, width);
 }
-.search-form__input {
+.search-form__input--wrapper {
   width: 90%;
   margin: px-rem(10) 0;
+  position: relative;
+  @include h-flex(center, center);
+}
+.search-form__input {
+  width: 100%;
   border: none;
   @include increase-element-size(
     px-rem(10),
@@ -22,10 +27,22 @@
     padding
   );
   &:focus {
-    outline: none;
+    outline: 1px solid $strong-orange;
+    outline-offset: -1px;
   }
 }
-.search-form__button {
+.search-form__btn--clear {
+  position: absolute;
+  right: 0;
+  @include strip-btn-defaults;
+  cursor: pointer;
+  color: rgba($btn-x-txt-color, 0.5);
+  padding: 0 px-rem(10);
+  &:hover {
+    color: rgba($btn-x-txt-color, 1);
+  }
+}
+.search-form__btn--submit {
   width: px-rem(200);
   height: auto;
   margin: px-rem(10) 0;
@@ -52,22 +69,6 @@
   text-align: center;
   color: $light-red;
   animation: element-pop-up 0.5s ease-in-out;
-}
-
-.saved-queries__wrapper {
-  @include increase-element-size(95%, $container-width-sizes, width);
-  margin: 0 auto;
-  @include h-flex(space-evenly, center);
-  flex-wrap: wrap;
-  overflow: hidden;
-}
-
-.saved-queries {
-  @include increase-element-size(
-    px-rem(20),
-    $saved-queries__wrapper--margin-bottom,
-    margin-bottom
-  );
 }
 
 .card-list {
@@ -122,7 +123,7 @@
   );
 }
 .load-more__btn {
-  @extend .search-form__button;
+  @extend .search-form__btn--submit;
   &:disabled {
     background-color: scale-color($btn-bg-color, $lightness: 50%);
     cursor: not-allowed;
@@ -133,7 +134,7 @@
 ================= MEDIA QUERIES =================
 ============================================ */
 @media (min-width: px-rem(480)) {
-  .search-form__input {
+  .search-form__input--wrapper {
     width: 70%;
   }
 }
@@ -143,11 +144,11 @@
     margin: px-rem(20) auto;
     flex-wrap: wrap;
   }
-  .search-form__input {
+  .search-form__input--wrapper {
     margin: px-rem(50) 0;
     width: 60%;
   }
-  .search-form__button {
+  .search-form__btn--submit {
     margin: px-rem(50) 0;
     width: 30%;
   }
@@ -157,10 +158,10 @@
 }
 
 @media (min-width: px-rem(1024)) {
-  .search-form__input {
+  .search-form__input--wrapper {
     width: 50%;
   }
-  .search-form__button {
+  .search-form__btn--submit {
     width: 20%;
   }
   .card {

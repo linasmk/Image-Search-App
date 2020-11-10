@@ -17,7 +17,7 @@ export const SearchImages = (props) => {
   const [images, setImages] = useState([]);
   const [imagesTotal, setImagesTotal] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const [inputError, setInputError] = useState(false);
+  const [inputError, setInputError] = useState(false); //5
   const [noResultsError, setNoResultsError] = useState(false);
   const [excessInputError, setExcessInputError] = useState(false);
   const [topLoader, setTopLoader] = useState(false);
@@ -81,19 +81,29 @@ export const SearchImages = (props) => {
     setQuery(newQuery);
     focusOnSearch.current.focus();
   }
+  const clearInputField = (e) => {
+    e.preventDefault();
+    setQuery("");
+  };
   return (
     <article className="search-images">
       <form className="search-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="query"
-          placeholder='Use keywords, ex: "phone"'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          ref={focusOnSearch}
-          className="search-form__input"
-        />
-        <button type="submit" className="search-form__button">
+        <div className="search-form__input--wrapper">
+          <input
+            type="text"
+            name="query"
+            placeholder='Use keywords, ex: "phone"'
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            ref={focusOnSearch}
+            className="search-form__input"
+          />
+          <button className="search-form__btn--clear" onClick={clearInputField}>
+            &#88;
+          </button>
+        </div>
+
+        <button type="submit" className="search-form__btn--submit">
           Search
         </button>
         <span

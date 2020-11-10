@@ -19,6 +19,15 @@
   list-style-type: none;
 }
 
+@mixin strip-btn-defaults {
+  background-color: transparent;
+  border: none;
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
 @mixin noHighlightAndSelect {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
