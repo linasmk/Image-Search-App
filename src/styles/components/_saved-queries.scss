@@ -1,0 +1,46 @@
+/* ============================================
+================= SAVED QUERIES =================
+============================================ */
+.saved-queries {
+  @include increase-element-size(
+    px-rem(20),
+    $saved-queries__wrapper--margin-bottom,
+    margin-bottom
+  );
+}
+.saved-queries__wrapper {
+  @include increase-element-size(95%, $container-width-sizes, width);
+  margin: 0 auto;
+  @include h-flex(space-evenly, center);
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.saved-queries__btn-wrapper {
+  width: 100%;
+  @include h-flex(flex-end, flex-end);
+  @include increase-element-size(
+    px-rem(5),
+    $box-elements-padding-sizes,
+    padding-top
+  );
+  @include increase-element-size(
+    px-rem(5),
+    $box-elements-padding-sizes,
+    padding-bottom
+  );
+}
+.saved-queries__btn--show {
+  background-color: transparent;
+  color: $btn-bg-color;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+  @include increase-element-size(
+    px-rem(16),
+    $saved-queries__btn--font-sizes,
+    font-size
+  );
+  &:focus {
+    outline: none;
+  }
+}

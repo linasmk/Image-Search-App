@@ -10,7 +10,7 @@
   @include h-flex(space-between, center);
   background-color: rgba($list-items-bg-color, 0.6);
 
-  animation: slidein-from-right 0.5s;
+  animation: element-pop-up 0.5s;
   cursor: pointer;
   transition: background-color 0.4s ease-in-out;
   &:hover {
@@ -24,7 +24,7 @@
   font-weight: 200;
   @include noHighlightAndSelect;
 }
-.saved-queries__btn {
+.saved-queries__btn--remove {
   @include increase-element-size(
     px-rem(16),
     $saved-queries__btn--font-sizes,

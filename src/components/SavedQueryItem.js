@@ -20,7 +20,7 @@ export const SavedQueryItem = (props) => {
       <p className="saved-queries__txt" onClick={handleChildQuery}>
         {props.name}
       </p>
-      <button className="saved-queries__btn" onClick={removeQuery}>
+      <button className="saved-queries__btn--remove" onClick={removeQuery}>
         &#88;
       </button>
     </div>

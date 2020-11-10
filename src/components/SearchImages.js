@@ -6,10 +6,9 @@ import { cl } from "../utils";
 /* =========== Redux ============== */
 import { connect } from "react-redux";
 import { addSavedQuery } from "../actions/savedQueries";
-import latestQueryFirst from "../selectors/latestQueryFirst";
 
 /* ========= Components =============== */
-import SavedQueryItem from "./SavedQueryItem";
+import SavedQueries from "./SavedQueries";
 import Loader from "./Loader";
 /* ========= Code ============= */
 export const SearchImages = (props) => {
@@ -23,6 +22,7 @@ export const SearchImages = (props) => {
   const [excessInputError, setExcessInputError] = useState(false);
   const [topLoader, setTopLoader] = useState(false);
   const [bottomLoader, setBottomLoader] = useState(false);
+
   const focusOnSearch = useRef(null);
 
   // Functions
@@ -110,20 +110,7 @@ export const SearchImages = (props) => {
             : ""}
         </span>
       </form>
-      <section className="saved-queries">
-        <div className="saved-queries__wrapper">
-          {props.savedQueries
-            .map((savedQuery) => (
-              <SavedQueryItem
-                key={savedQuery.id}
-                query={query}
-                onClick={handleChildQuery}
-                {...savedQuery}
-              />
-            ))
-            .slice(0, 10)}
-        </div>
-      </section>
+      <SavedQueries onClick={handleChildQuery} />
       {topLoader ? (
         <Loader display="block" />
       ) : (
@@ -176,10 +163,7 @@ export const SearchImages = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  savedQueries: latestQueryFirst(state.savedQueries),
-});
 const mapDispatchToProps = (dispatch) => ({
   addSavedQuery: (name) => dispatch(addSavedQuery({ name })),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(SearchImages);
+export default connect(undefined, mapDispatchToProps)(SearchImages);
