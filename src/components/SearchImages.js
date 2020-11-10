@@ -9,6 +9,7 @@ import { addSavedQuery } from "../actions/savedQueries";
 
 /* ========= Components =============== */
 import SavedQueries from "./SavedQueries";
+import Cards from "./Cards";
 import Loader from "./Loader";
 /* ========= Code ============= */
 export const SearchImages = (props) => {
@@ -17,7 +18,7 @@ export const SearchImages = (props) => {
   const [images, setImages] = useState([]);
   const [imagesTotal, setImagesTotal] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const [inputError, setInputError] = useState(false); //5
+  const [inputError, setInputError] = useState(false);
   const [noResultsError, setNoResultsError] = useState(false);
   const [excessInputError, setExcessInputError] = useState(false);
   const [topLoader, setTopLoader] = useState(false);
@@ -81,9 +82,14 @@ export const SearchImages = (props) => {
     setQuery(newQuery);
     focusOnSearch.current.focus();
   }
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+  };
   const clearInputField = (e) => {
     e.preventDefault();
     setQuery("");
+    focusOnSearch.current.focus();
   };
   return (
     <article className="search-images">
@@ -98,7 +104,10 @@ export const SearchImages = (props) => {
             ref={focusOnSearch}
             className="search-form__input"
           />
-          <button className="search-form__btn--clear" onClick={clearInputField}>
+          <button
+            type="button"
+            className="search-form__btn--clear"
+            onClick={clearInputField}>
             &#88;
           </button>
         </div>
@@ -121,30 +130,12 @@ export const SearchImages = (props) => {
         </span>
       </form>
       <SavedQueries onClick={handleChildQuery} />
-      {topLoader ? (
-        <Loader display="block" />
-      ) : (
-        <section className="card-list">
-          {noResultsError ? (
-            <section className="no-results">
-              <h3 className="no-results__warning">
-                Your search keyword did not return any results!
-              </h3>
-            </section>
-          ) : (
-            images.map((image, index) => (
-              <div className="card" key={index}>
-                <img
-                  className="card--image"
-                  alt={image.alt_description}
-                  src={image.urls.small}
-                  width="50%"
-                  height="50%"></img>
-              </div>
-            ))
-          )}
-        </section>
-      )}
+
+      <Cards
+        topLoader={topLoader}
+        noResultsError={noResultsError}
+        images={images}
+      />
       <Loader bottomLoader={bottomLoader} display="none" />
       <section className="load-more">
         <div className="load-more__inner-wrapper">
