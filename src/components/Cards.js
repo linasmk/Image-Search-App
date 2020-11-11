@@ -1,11 +1,16 @@
 /* ========= App Dependencies ============= */
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import { cl } from "../utils";
 /* ========= Components =============== */
+import CardModal from "./CardModal";
 import Loader from "./Loader";
 /* ========= Code ============= */
 
 export const Cards = (props) => {
+  const [cardModalId, setCardModalId] = useState(undefined);
+  const openCardModal = (id) => setCardModalId(id);
+  const closeCardModal = () => setCardModalId(undefined);
+
   return (
     <div>
       {props.topLoader ? (
@@ -23,10 +28,16 @@ export const Cards = (props) => {
               <div className="card" key={index}>
                 <img
                   className="card--image"
+                  onClick={() => openCardModal(image.id)}
                   alt={image.alt_description}
                   src={image.urls.small}
                   width="50%"
                   height="50%"></img>
+                <CardModal
+                  openCardModal={cardModalId === image.id}
+                  closeCardModal={closeCardModal}
+                  {...image}
+                />
               </div>
             ))
           )}

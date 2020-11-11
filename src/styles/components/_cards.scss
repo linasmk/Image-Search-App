@@ -1,0 +1,56 @@
+/* ============================================
+================= SEARCH IMAGES =================
+============================================ */
+.card-list {
+  @include increase-element-size(95%, $container-width-sizes, width);
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.no-results {
+  width: 80%;
+  height: 15vh;
+  margin: px-rem(25) auto;
+  @include v-flex(center, center);
+}
+.no-results__warning {
+  text-align: center;
+  font-weight: 500;
+}
+.card {
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
+  margin: 0 px-rem(8) px-rem(8) 0;
+  overflow: hidden;
+  @include v-flex(center, center);
+}
+
+.card--image {
+  min-width: 100%;
+  max-height: 100%;
+  flex-grow: 5;
+  object-fit: cover;
+  border-radius: 10px;
+  //vertical-align: bottom;
+  animation: element-pop-up 1.5s;
+  transition: transform 0.4s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+/* ============================================
+================= MEDIA QUERIES =================
+============================================ */
+@media (min-width: px-rem(768)) {
+  .card {
+    width: 50%;
+  }
+}
+@media (min-width: px-rem(1024)) {
+  .card {
+    width: 32%;
+  }
+}

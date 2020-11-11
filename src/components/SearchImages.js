@@ -13,7 +13,7 @@ import Cards from "./Cards";
 import Loader from "./Loader";
 /* ========= Code ============= */
 export const SearchImages = (props) => {
-  // State hooks
+  // ================ Hooks ==============
   const [query, setQuery] = useState("");
   const [images, setImages] = useState([]);
   const [imagesTotal, setImagesTotal] = useState(0);
@@ -23,10 +23,9 @@ export const SearchImages = (props) => {
   const [excessInputError, setExcessInputError] = useState(false);
   const [topLoader, setTopLoader] = useState(false);
   const [bottomLoader, setBottomLoader] = useState(false);
-
   const focusOnSearch = useRef(null);
 
-  // Functions
+  // ============ Functions ===============================
   const searchPhotos = async (e) => {
     e.preventDefault();
     setNoResultsError(false);
@@ -40,6 +39,7 @@ export const SearchImages = (props) => {
           setNoResultsError(true);
         } else {
           setImages(json.results);
+          cl(json.results);
         }
       });
   };
@@ -68,24 +68,17 @@ export const SearchImages = (props) => {
       props.addSavedQuery(query);
     }
   };
-
   useEffect(() => {
     updatePhotos(pageNumber);
   }, [pageNumber]);
-
   const loadMore = () => {
     setPageNumber((prevPageNumber) => prevPageNumber + 1);
     setBottomLoader(true);
   };
-
   function handleChildQuery(newQuery) {
     setQuery(newQuery);
     focusOnSearch.current.focus();
   }
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
-  };
   const clearInputField = (e) => {
     e.preventDefault();
     setQuery("");

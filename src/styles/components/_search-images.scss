@@ -71,45 +71,6 @@
   animation: element-pop-up 0.5s ease-in-out;
 }
 
-.card-list {
-  @include increase-element-size(95%, $container-width-sizes, width);
-  margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-}
-.no-results {
-  width: 80%;
-  height: 15vh;
-  margin: px-rem(25) auto;
-  @include v-flex(center, center);
-}
-.no-results__warning {
-  text-align: center;
-  font-weight: 500;
-}
-.card {
-  width: 100%;
-  height: auto;
-  flex-grow: 1;
-  margin: 0 px-rem(8) px-rem(8) 0;
-  overflow: hidden;
-  @include v-flex(center, center);
-}
-
-.card--image {
-  min-width: 100%;
-  max-height: 100%;
-  flex-grow: 5;
-  object-fit: cover;
-  border-radius: 10px;
-  //vertical-align: bottom;
-  animation: element-pop-up 1.5s;
-  transition: transform 0.4s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
 .load-more {
   @include increase-element-size(95%, $container-width-sizes, width);
   margin: 0 auto;
@@ -152,9 +113,6 @@
     margin: px-rem(50) 0;
     width: 30%;
   }
-  .card {
-    width: 50%;
-  }
 }
 
 @media (min-width: px-rem(1024)) {
@@ -163,8 +121,5 @@
   }
   .search-form__btn--submit {
     width: 20%;
-  }
-  .card {
-    width: 32%;
   }
 }

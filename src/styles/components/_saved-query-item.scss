@@ -32,11 +32,11 @@
   );
   @include noHighlightAndSelect;
   @include btn-strip-default-styles(transparent);
-  color: rgba($strong-orange, 0.5);
+  color: rgba($btn-x-txt-color, 0.5);
   transition: color 0.4s ease-in-out;
   margin-top: 3px;
   &:hover {
-    color: rgba($strong-orange, 1);
+    color: rgba($btn-x-txt-color, 1);
     cursor: pointer;
   }
 }
