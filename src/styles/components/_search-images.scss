@@ -8,7 +8,8 @@
   flex-direction: column;
 }
 .search-form {
-  margin: px-rem(10) auto;
+  margin: 0 auto px-rem(10) auto;
+  //border-top: 1px solid $light-red;
   @include v-flex(center, center);
   @include increase-element-size(95%, $container-width-sizes, width);
 }
@@ -101,8 +102,9 @@
 }
 @media (min-width: px-rem(768)) {
   .search-form {
+    background-color: black;
     @include h-flex(center, center);
-    margin: px-rem(20) auto;
+    margin: 0 auto px-rem(20) auto;
     flex-wrap: wrap;
   }
   .search-form__input--wrapper {

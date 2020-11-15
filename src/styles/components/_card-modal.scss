@@ -30,15 +30,26 @@
   @include increase-element-size(92%, $card-modal-width, width);
   @include increase-element-size(90%, $card-modal-height, height);
   @include v-flex(center, center);
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: px-rem(3) px-rem(3) px-rem(17) px-rem(10)
+      rgba($strong-cyan, 0.2);
+  }
 }
-
+.card-modal__content--wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 .card-modal__content {
   background-color: $white;
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 5% 10% 65% 10% 10%;
+  grid-template-rows: 3% auto 65% 8% 10%;
+  overflow-y: scroll;
 }
 .card-modal__topbar {
   width: 100%;
@@ -57,15 +68,13 @@
   padding: px-rem(5);
   fill: $btn-txt-color;
   z-index: 2;
+  &:hover {
+    background-color: scale-color($btn-bg-color, $lightness: 15%);
+  }
 }
-.card-modal__main {
-  width: 100%;
-  grid-row: 3;
-  @include v-flex(center, center);
-}
-.card-modal__img {
-  max-width: 90%;
-  max-height: 100%;
+.card-modal__description-wrapper {
+  grid-row: 2;
+  @include h-flex(center, center);
 }
 .card-modal__description {
   text-align: center;
@@ -73,17 +82,78 @@
   letter-spacing: 2px;
   font-weight: 900;
   color: $p-txt-color;
+  margin: px-rem(10) px-rem(15);
+}
+.card-modal__main {
+  width: 100%;
+  grid-row: 3;
+  @include v-flex(center, center);
+}
+.card-modal__img {
+  max-width: 95%;
+  max-height: 100%;
+}
+
+.card-modal__info-bar {
+  grid-row: 4;
+  justify-self: center;
+  width: 95%;
+  @include h-flex(space-evenly, center);
+  flex-wrap: wrap;
+}
+.card-modal__data {
+  color: $p-txt-color;
+}
+.card-modal__text {
+  color: $strong-orange;
+}
+.card-modal__btn-bar {
+  width: 100%;
+  grid-row: 5;
+  @include h-flex(center, center);
+  margin: px-rem(15) 0;
+}
+.card-modal__btn--download {
+  width: px-rem(200);
+  height: auto;
+  background-color: $list-items-bg-color;
+  color: $strong-orange;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  @include increase-element-size(px-rem(5), $download-padding-sizes, padding);
+  @include noHighlightAndSelect;
+  transition: background-color 0.4s ease-in;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: scale-color($list-items-bg-color, $lightness: 15%);
+  }
 }
 
 /* ============================================
 ================= MEDIA QUERIES =================
 ============================================ */
-
+@media (min-width: px-rem(480)) {
+  .card-modal__info-bar {
+    width: 90%;
+  }
+}
+@media (min-width: px-rem(768)) {
+  .card-modal__info-bar {
+    width: 80%;
+  }
+}
 @media (min-width: px-rem(1024)) {
   .card-modal__close-btn {
     width: px-rem(35);
     height: px-rem(35);
     right: px-rem(-15);
     top: px-rem(-15);
+  }
+  .card-modal__info-bar {
+    width: 70%;
   }
 }
