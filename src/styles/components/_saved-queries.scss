@@ -17,7 +17,7 @@
 }
 .saved-queries__btn-wrapper {
   width: 100%;
-  @include h-flex(flex-end, flex-end);
+  @include h-flex(center, center);
   @include increase-element-size(
     px-rem(5),
     $box-elements-padding-sizes,
@@ -33,7 +33,6 @@
   background-color: transparent;
   color: $btn-bg-color;
   border: none;
-  align-self: flex-end;
   cursor: pointer;
   @include noHighlightAndSelect;
   @include increase-element-size(
