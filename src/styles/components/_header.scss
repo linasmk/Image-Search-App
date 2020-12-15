@@ -11,6 +11,7 @@
   background-color: $black;
   @include increase-element-size(95%, $container-width-sizes, width);
   padding: 3vh 0;
+  z-index: 1;
 }
 .title {
   color: $title-color;
@@ -26,9 +27,11 @@
 @media (min-width: px-rem(768)) {
   .header {
     @include h-flex(center, flex-end);
-    background-image: url("../img/vertigo.jpg");
+    background-image: url("../img/header-bg.jpg");
     background-repeat: no-repeat;
     background-position: cover;
     background-size: 100%;
+    background-attachment: fixed;
+    position: relative;
   }
 }
