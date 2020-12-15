@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const app = express();
-const publicPath = path.join(__dirname, "..", "public");
+const publicPath = path.join(__dirname, "..", "dist");
 
 /* Environment variable that Heroku sets up for the application.
 If the application runs on a local machine then the application defaults to port 3000 */
