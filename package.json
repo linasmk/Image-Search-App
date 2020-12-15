@@ -13,7 +13,7 @@
     "_comment-for-start-command_": "start is needed in order to deploy to Heroku. When it finds this script, it runs node server",
     "start": "node server/server.js",
     "_comment-for-heroku-postbuild_": "heroku-postbuild is going to run after Heroku installs all of the depencencies",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@babel/plugin-transform-spread": "^7.12.1",
