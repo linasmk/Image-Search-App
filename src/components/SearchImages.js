@@ -39,7 +39,6 @@ export const SearchImages = (props) => {
           setNoResultsError(true);
         } else {
           setImages(json.results);
-          cl(json.results);
         }
       });
   };
