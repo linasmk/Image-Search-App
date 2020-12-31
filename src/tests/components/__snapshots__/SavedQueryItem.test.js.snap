@@ -7,12 +7,14 @@ exports[`renders SavedQueryItem correctly 1`] = `
   <p
     className="saved-queries__txt"
     onClick={[Function]}
+    role="presentation"
   >
     dog
   </p>
   <button
-    className="saved-queries__btn"
+    className="saved-queries__btn--remove"
     onClick={[Function]}
+    type="button"
   >
     X
   </button>

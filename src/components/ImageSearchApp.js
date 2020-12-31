@@ -2,7 +2,7 @@
 import React from "react";
 /* ========= Components ============= */
 import Header from "./Header";
-import SearchImages from "./SearchImages";
+import { SearchImages } from "../containers/SearchImages";
 import Footer from "./Footer";
 /* ========= Code ============= */
 const ImageSearchApp = () => (

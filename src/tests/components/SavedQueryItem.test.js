@@ -4,16 +4,18 @@ import { shallow } from "enzyme";
 import { SavedQueryItem } from "../../components/SavedQueryItem";
 import savedQueries from "../fixtures/savedQueries";
 /* ========= Code ============= */
-let wrapper, removeSavedQuery;
+let wrapper, removeSavedQuery, onClick;
 
 beforeEach(() => {
   removeSavedQuery = jest.fn();
+  onClick = jest.fn();
   wrapper = shallow(
     <SavedQueryItem
-      {...savedQueries[0]}
+      id={savedQueries[0].id}
+      name={savedQueries[0].name}
       removeSavedQuery={removeSavedQuery}
-      savedQuery={savedQueries[0].id}
-    />
+      onClick={onClick}
+    />,
   );
 });
 

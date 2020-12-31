@@ -8,19 +8,16 @@ export default (state = savedQueriesReducerDefaultState, action) => {
   switch (action.type) {
     // case ADD_SAVED_QUERY:
     //   return [...state, action.savedQuery];
-    //===============================================
+    // ===============================================
     case ADD_SAVED_QUERY:
-      if (state.some((item) => item["name"] === action.savedQuery.name)) {
+      if (state.some((item) => item.name === action.savedQuery.name)) {
         return [...state];
-      } else {
-        return [...state, action.savedQuery];
       }
+      return [...state, action.savedQuery];
 
     // ======================================
     case "REMOVE_SAVED_QUERY":
-      return state.filter((savedQuery) => {
-        return savedQuery.id !== action.id;
-      });
+      return state.filter((savedQuery) => savedQuery.id !== action.id);
     default:
       return state;
   }

@@ -1,39 +1,39 @@
 /* ========= App Dependencies ============= */
-import React, { useState } from "react";
-import { cl } from "../utils";
-/* =========== Redux ============== */
-import { connect } from "react-redux";
-import { removeSavedQuery } from "../actions/savedQueries";
+import React from "react";
+import PropTypes from "prop-types";
 
 /* ========= Code ============= */
-export const SavedQueryItem = (props) => {
+export const SavedQueryItem = ({ removeSavedQuery, onClick, name, id }) => {
   /* ========== Functions ========== */
-  const removeQuery = (e) => {
-    props.removeSavedQuery({ id: props.id });
-  };
+  const removeQuery = () => removeSavedQuery({ id });
+
   function handleChildQuery(e) {
-    props.onClick(e.target.textContent);
+    onClick(e.target.textContent);
   }
+
   /* ========== Content ========== */
   return (
     <div className="saved-queries__item">
-      <p className="saved-queries__txt" onClick={handleChildQuery}>
-        {props.name}
+      <p
+        className="saved-queries__txt"
+        role="presentation"
+        onClick={handleChildQuery}>
+        {name}
       </p>
-      <button className="saved-queries__btn--remove" onClick={removeQuery}>
+      <button
+        type="button"
+        className="saved-queries__btn--remove"
+        onClick={removeQuery}>
         &#88;
       </button>
     </div>
   );
 };
-const mapStateToProps = (state, props) => {
-  return {
-    savedQueries: state.savedQueries.find(
-      (savedQuery) => savedQuery.id === props.id
-    ),
-  };
+
+SavedQueryItem.propTypes = {
+  removeSavedQuery: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
-const mapsDispatchToProps = (dispatch) => ({
-  removeSavedQuery: (id) => dispatch(removeSavedQuery(id)),
-});
-export default connect(mapStateToProps, mapsDispatchToProps)(SavedQueryItem);
+export default SavedQueryItem;

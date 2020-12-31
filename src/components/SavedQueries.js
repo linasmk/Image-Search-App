@@ -1,13 +1,12 @@
 /* ========= App Dependencies ============= */
 import React, { useState } from "react";
-import { cl } from "../utils";
+import PropTypes from "prop-types";
 /* =========== Redux ============== */
-import { connect } from "react-redux";
-import latestQueryFirst from "../selectors/latestQueryFirst";
+
 /* ========= Components =============== */
-import SavedQueryItem from "./SavedQueryItem";
+import { SavedQueryItem } from "../containers/SavedQueryItem";
 /* ========= Code ============= */
-export const SavedQueries = (props) => {
+export const SavedQueries = ({ savedQueries, onClick }) => {
   const [sliceSavedQueries, setSliceSavedQueries] = useState(10);
   const [queriesListOpen, setQueriesListOpen] = useState(false);
 
@@ -15,28 +14,29 @@ export const SavedQueries = (props) => {
     if (queriesListOpen) {
       setSliceSavedQueries(10);
     } else {
-      setSliceSavedQueries(props.savedQueries.length);
+      setSliceSavedQueries(savedQueries.length);
     }
     setQueriesListOpen(!queriesListOpen);
   };
   return (
     <section className="saved-queries">
       <div className="saved-queries__wrapper">
-        {props.savedQueries
+        {savedQueries
           .map((savedQuery) => (
             <SavedQueryItem
               key={savedQuery.id}
-              query={props.query}
-              onClick={props.onClick}
-              {...savedQuery}
+              id={savedQuery.id}
+              name={savedQuery.name}
+              onClick={onClick}
             />
           ))
           .slice(0, sliceSavedQueries)}
         <div className="saved-queries__btn-wrapper">
           <button
             className="saved-queries__btn--show"
+            type="button"
             style={
-              props.savedQueries.length > 10
+              savedQueries.length > 10
                 ? { display: "block" }
                 : { display: "none" }
             }
@@ -48,7 +48,8 @@ export const SavedQueries = (props) => {
     </section>
   );
 };
-const mapStateToProps = (state) => ({
-  savedQueries: latestQueryFirst(state.savedQueries),
-});
-export default connect(mapStateToProps)(SavedQueries);
+SavedQueries.propTypes = {
+  savedQueries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+export default SavedQueries;

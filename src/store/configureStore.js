@@ -4,7 +4,7 @@ import savedQueriesReducer from "../reducers/savedQueriesReducer";
 /* =================================================
 =========== STORE CONFIGURATION ================
 ================================================= */
-//localStorage.clear();
+// localStorage.clear();
 function saveToLocalStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -31,7 +31,7 @@ const persistedState = loadFromLocalStorage();
 const store = createStore(
   rootReducer,
   persistedState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 store.subscribe(() => saveToLocalStorage(store.getState()));
 export default store;

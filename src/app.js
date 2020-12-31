@@ -11,6 +11,10 @@ import "./styles/styles.scss";
 import ImageSearchApp from "./components/ImageSearchApp";
 /* =========== Code ============== */
 const root = document.getElementById("app");
-const jsx = <Provider store={store}><ImageSearchApp /></Provider>
+const jsx = (
+  <Provider store={store}>
+    <ImageSearchApp />
+  </Provider>
+);
 
 ReactDOM.render(jsx, root);

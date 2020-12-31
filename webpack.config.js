@@ -1,7 +1,8 @@
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const htmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env) => {
   const isProduction = env === "production";
@@ -50,7 +51,8 @@ module.exports = (env) => {
     plugins: [
       new Dotenv(),
       CSSExtract,
-      new htmlWebpackPlugin({
+      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+      new HtmlWebpackPlugin({
         title: "Image Search App",
         favicon: "src/html/img/favicon.png",
         template: "src/html/index.html",

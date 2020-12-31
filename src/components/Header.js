@@ -2,13 +2,11 @@
 import React from "react";
 /* ============ Code ============ */
 
-const Header = () => {
-  return (
-    <header className="header">
-      <div className="header__inner-wrapper">
-        <h1 className="title">Image Search App</h1>
-      </div>
-    </header>
-  );
-};
+const Header = () => (
+  <header className="header">
+    <div className="header__inner-wrapper">
+      <h1 className="title">Image Search App</h1>
+    </div>
+  </header>
+);
 export default Header;

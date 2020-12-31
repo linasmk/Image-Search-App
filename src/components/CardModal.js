@@ -1,25 +1,32 @@
 /* ========= App Dependencies ============= */
-import React, { useState } from "react";
-import { AiTwotoneCloseCircle } from "react-icons/ai";
+import React from "react";
+import PropTypes from "prop-types";
 import { VscChromeClose } from "react-icons/vsc";
 import Modal from "react-modal";
-import { cl } from "../utils";
 /* ========= Code ============= */
 
-export const CardModal = (props) => {
-  const afterOpenModal = () => (subtitle.style.color = "#FAEBD7");
+export const CardModal = ({
+  openCardModal,
+  closeCardModal,
+  altDescription,
+  imageID,
+  likes,
+  urlsFull,
+  firstName,
+  lastName,
+  download,
+}) => {
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
 
   return (
     <Modal
-      isOpen={props.openCardModal}
-      onRequestClose={props.closeCardModal}
-      afterOpenModal={afterOpenModal}
-      contentLabel={props.alt_description}
+      isOpen={openCardModal}
+      onRequestClose={closeCardModal}
+      contentLabel={altDescription}
       closeTimeoutMS={800}
       className="card-modal"
-      key={props.id}
+      key={imageID}
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, .75)",
@@ -32,39 +39,42 @@ export const CardModal = (props) => {
       <div className="card-modal__content--wrapper">
         <VscChromeClose
           className="card-modal__close-btn"
-          onClick={props.closeCardModal}
+          onClick={closeCardModal}
         />
         <article className="card-modal__content">
-          <div className="card-modal__topbar"></div>
+          <div className="card-modal__topbar" />
           <section className="card-modal__description-wrapper">
             <h2 className="card-modal__description">
-              {props.alt_description != null
-                ? capitalizeFirstLetter(props.alt_description)
+              {altDescription != null
+                ? capitalizeFirstLetter(altDescription)
                 : ""}
             </h2>
           </section>
           <section className="card-modal__main">
-            <img className="card-modal__img" src={props.urls.full}></img>
+            <img
+              className="card-modal__img"
+              alt={altDescription}
+              src={urlsFull}
+            />
           </section>
           <section className="card-modal__info-bar">
             <p className="card-modal__data">
-              {props.likes != null ? `${props.likes} ` : 0}
+              {likes != null ? `${likes} ` : 0}
               <span className="card-modal__text">Likes</span>
             </p>
             <p className="card-modal__data">
               <span className="card-modal__text">by </span>
-              {props.user.first_name !== null
-                ? `${props.user.first_name}`
-                : `Uknown` + ` ` + props.user.last_name != null
-                ? ` ${props.user.last_name}`
-                : `Uknown`}
+              {firstName !== null ? firstName : `Uknown`}
+              <span> </span>
+              {lastName !== null ? lastName : `Uknown`}
             </p>
           </section>
           <section className="card-modal__btn-bar">
             <a
               className="card-modal__btn--download"
-              href={`${props.links.download}?force=true`}
+              href={`${download}?force=true`}
               download
+              rel="noreferrer"
               target="_blank">
               Download
             </a>
@@ -73,5 +83,22 @@ export const CardModal = (props) => {
       </div>
     </Modal>
   );
+};
+CardModal.defaultProps = {
+  firstName: null,
+  lastName: null,
+  altDescription: null,
+  likes: 0,
+};
+CardModal.propTypes = {
+  openCardModal: PropTypes.bool.isRequired,
+  closeCardModal: PropTypes.func.isRequired,
+  imageID: PropTypes.string.isRequired,
+  urlsFull: PropTypes.string.isRequired,
+  download: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  altDescription: PropTypes.string,
+  likes: PropTypes.number,
 };
 export default CardModal;

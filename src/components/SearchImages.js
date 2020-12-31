@@ -1,18 +1,17 @@
 /* ========= App Dependencies ============= */
 import React, { useEffect, useState, useRef } from "react";
-import { UnsplashAccessKey } from "../../accessKey";
-import Unsplash, { toJson } from "unsplash-js";
-import { cl } from "../utils";
-/* =========== Redux ============== */
-import { connect } from "react-redux";
-import { addSavedQuery } from "../actions/savedQueries";
+import PropTypes from "prop-types";
+import Unsplash, { toJson } from "unsplash-js"; // eslint-disable-line no-unused-vars
 
 /* ========= Components =============== */
-import SavedQueries from "./SavedQueries";
+import { SavedQueries } from "../containers/SavedQueries";
 import Cards from "./Cards";
 import Loader from "./Loader";
+
+import { UnsplashAccessKey } from "../../accessKey";
+
 /* ========= Code ============= */
-export const SearchImages = (props) => {
+export const SearchImages = ({ addSavedQuery }) => {
   // ================ Hooks ==============
   const [query, setQuery] = useState("");
   const [images, setImages] = useState([]);
@@ -39,10 +38,11 @@ export const SearchImages = (props) => {
           setNoResultsError(true);
         } else {
           setImages(json.results);
+          console.log(json.results);
         }
       });
   };
-  const updatePhotos = async (pageNumber) => {
+  const updatePhotos = async () => {
     UnsplashAccessKey.search
       .photos(query, pageNumber, 10)
       .then(toJson)
@@ -64,7 +64,7 @@ export const SearchImages = (props) => {
       setExcessInputError(false);
       setTopLoader(true);
       searchPhotos(e);
-      props.addSavedQuery(query);
+      addSavedQuery(query);
     }
   };
   useEffect(() => {
@@ -141,13 +141,14 @@ export const SearchImages = (props) => {
             {images.length > 1 ? " results" : " result"} out of {imagesTotal}
           </p>
           <button
+            type="button"
             display="none"
             style={
               images.length === 0 ? { display: "none" } : { display: "block" }
             }
             className="load-more__btn"
             onClick={loadMore}
-            disabled={images.length === imagesTotal ? true : false}>
+            disabled={images.length === imagesTotal}>
             Load more
           </button>
         </div>
@@ -156,7 +157,11 @@ export const SearchImages = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addSavedQuery: (name) => dispatch(addSavedQuery({ name })),
-});
-export default connect(undefined, mapDispatchToProps)(SearchImages);
+SearchImages.defaultProps = {
+  addSavedQuery: undefined,
+};
+SearchImages.propTypes = {
+  addSavedQuery: PropTypes.func,
+};
+
+export default SearchImages;

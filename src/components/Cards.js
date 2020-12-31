@@ -1,42 +1,50 @@
 /* ========= App Dependencies ============= */
 import React, { useState } from "react";
-import { cl } from "../utils";
+import PropTypes from "prop-types";
 /* ========= Components =============== */
 import CardModal from "./CardModal";
 import Loader from "./Loader";
 /* ========= Code ============= */
 
-export const Cards = (props) => {
+const Cards = ({ images, topLoader, noResultsError }) => {
   const [cardModalId, setCardModalId] = useState(undefined);
   const openCardModal = (id) => setCardModalId(id);
   const closeCardModal = () => setCardModalId(undefined);
 
   return (
     <div>
-      {props.topLoader ? (
+      {topLoader ? (
         <Loader display="block" />
       ) : (
         <section className="card-list">
-          {props.noResultsError ? (
+          {noResultsError ? (
             <section className="no-results">
               <h3 className="no-results__warning">
                 Your search keyword did not return any results!
               </h3>
             </section>
           ) : (
-            props.images.map((image, index) => (
-              <div className="card" key={index}>
+            images.map((image) => (
+              <div className="card" key={image.id}>
                 <img
+                  role="presentation"
                   className="card--image"
                   onClick={() => openCardModal(image.id)}
                   alt={image.alt_description}
                   src={image.urls.small}
                   width="50%"
-                  height="50%"></img>
+                  height="50%"
+                />
                 <CardModal
                   openCardModal={cardModalId === image.id}
                   closeCardModal={closeCardModal}
-                  {...image}
+                  altDescription={image.alt_description}
+                  imageID={image.id}
+                  likes={image.likes}
+                  urlsFull={image.urls.full}
+                  firstName={image.user.first_name}
+                  lastName={image.user.last_name}
+                  download={image.links.download}
                 />
               </div>
             ))
@@ -45,5 +53,10 @@ export const Cards = (props) => {
       )}
     </div>
   );
+};
+Cards.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  topLoader: PropTypes.bool.isRequired,
+  noResultsError: PropTypes.bool.isRequired,
 };
 export default Cards;
