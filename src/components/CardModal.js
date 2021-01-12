@@ -14,7 +14,7 @@ export const CardModal = ({
   urlsFull,
   firstName,
   lastName,
-  download,
+  download
 }) => {
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
@@ -29,11 +29,11 @@ export const CardModal = ({
       key={imageID}
       style={{
         overlay: {
-          backgroundColor: "rgba(0, 0, 0, .75)",
+          backgroundColor: "rgba(0, 0, 0, .75)"
         },
         content: {
-          color: "lightsteelblue",
-        },
+          color: "lightsteelblue"
+        }
       }}
       ariaHideApp={false}>
       <div className="card-modal__content--wrapper">
@@ -88,17 +88,22 @@ CardModal.defaultProps = {
   firstName: null,
   lastName: null,
   altDescription: null,
+  download: null,
+  imageID: null,
+  urlsFull: null,
   likes: 0,
+  openCardModal: undefined,
+  closeCardModal: undefined
 };
 CardModal.propTypes = {
-  openCardModal: PropTypes.bool.isRequired,
-  closeCardModal: PropTypes.func.isRequired,
-  imageID: PropTypes.string.isRequired,
-  urlsFull: PropTypes.string.isRequired,
-  download: PropTypes.string.isRequired,
+  openCardModal: PropTypes.bool,
+  closeCardModal: PropTypes.func,
+  imageID: PropTypes.string,
+  urlsFull: PropTypes.string,
+  download: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   altDescription: PropTypes.string,
-  likes: PropTypes.number,
+  likes: PropTypes.number
 };
 export default CardModal;

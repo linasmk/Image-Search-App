@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 /* =========== Redux ============== */
 
 /* ========= Components =============== */
-import { SavedQueryItem } from "../containers/SavedQueryItem";
+import { SavedQueryItem } from "@cont/SavedQueryItem";
 /* ========= Code ============= */
 export const SavedQueries = ({ savedQueries, onClick }) => {
   const [sliceSavedQueries, setSliceSavedQueries] = useState(10);
@@ -48,8 +48,11 @@ export const SavedQueries = ({ savedQueries, onClick }) => {
     </section>
   );
 };
+SavedQueries.defaultProps = {
+  onClick: undefined
+};
 SavedQueries.propTypes = {
   savedQueries: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func
 };
 export default SavedQueries;

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders CardModal component correctly 1`] = `
+<Modal
+  ariaHideApp={false}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="card-modal"
+  closeTimeoutMS={800}
+  contentLabel={null}
+  isOpen={false}
+  key="null"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  role="dialog"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+  style={
+    Object {
+      "content": Object {
+        "color": "lightsteelblue",
+      },
+      "overlay": Object {
+        "backgroundColor": "rgba(0, 0, 0, .75)",
+      },
+    }
+  }
+>
+  <div
+    className="card-modal__content--wrapper"
+  >
+    <VscChromeClose
+      className="card-modal__close-btn"
+    />
+    <article
+      className="card-modal__content"
+    >
+      <div
+        className="card-modal__topbar"
+      />
+      <section
+        className="card-modal__description-wrapper"
+      >
+        <h2
+          className="card-modal__description"
+        />
+      </section>
+      <section
+        className="card-modal__main"
+      >
+        <img
+          alt={null}
+          className="card-modal__img"
+          src={null}
+        />
+      </section>
+      <section
+        className="card-modal__info-bar"
+      >
+        <p
+          className="card-modal__data"
+        >
+          0 
+          <span
+            className="card-modal__text"
+          >
+            Likes
+          </span>
+        </p>
+        <p
+          className="card-modal__data"
+        >
+          <span
+            className="card-modal__text"
+          >
+            by 
+          </span>
+          Uknown
+          <span>
+             
+          </span>
+          Uknown
+        </p>
+      </section>
+      <section
+        className="card-modal__btn-bar"
+      >
+        <a
+          className="card-modal__btn--download"
+          download={true}
+          href="null?force=true"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Download
+        </a>
+      </section>
+    </article>
+  </div>
+</Modal>
+`;

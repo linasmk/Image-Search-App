@@ -1,9 +1,9 @@
 /* ===== Redux ===== */
 import { connect } from "react-redux";
-import latestQueryFirst from "../selectors/latestQueryFirst";
+import latestQueryFirst from "@selectors/latestQueryFirst";
 
 /* ====== Components ===== */
-import SavedQueriesComponent from "../components/SavedQueries";
+import SavedQueriesComponent from "@comp/SavedQueries";
 
 /* ========= Code ========= */
 export const SavedQueries = connect((state) => ({

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SavedQueryItem component with SavedQueries array correctly 1`] = `
+<section
+  className="saved-queries"
+>
+  <div
+    className="saved-queries__wrapper"
+  >
+    <Connect(SavedQueryItem)
+      id="1"
+      key="1"
+      name="dog"
+    />
+    <Connect(SavedQueryItem)
+      id="2"
+      key="2"
+      name="lemon"
+    />
+    <Connect(SavedQueryItem)
+      id="3"
+      key="3"
+      name="notes"
+    />
+    <div
+      className="saved-queries__btn-wrapper"
+    >
+      <button
+        className="saved-queries__btn--show"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+        type="button"
+      >
+        Show more
+      </button>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`renders SavedQueryItem component with empty SavedQueries array correctly 1`] = `
+<section
+  className="saved-queries"
+>
+  <div
+    className="saved-queries__wrapper"
+  >
+    <div
+      className="saved-queries__btn-wrapper"
+    >
+      <button
+        className="saved-queries__btn--show"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+        type="button"
+      >
+        Show more
+      </button>
+    </div>
+  </div>
+</section>
+`;

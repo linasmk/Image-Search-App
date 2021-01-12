@@ -12,18 +12,18 @@ module.exports = (env) => {
     entry: "./src/app.js",
     output: {
       path: path.join(__dirname, "dist"),
-      filename: "bundle.js",
+      filename: "bundle.js"
     },
     module: {
       rules: [
         {
           loader: "babel-loader",
           test: /\.js$/,
-          exclude: /node_modules/,
+          exclude: /node_modules/
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          use: ["file-loader"],
+          use: ["file-loader"]
         },
         {
           test: /\.s?css$/,
@@ -32,21 +32,21 @@ module.exports = (env) => {
             {
               loader: "css-loader",
               options: {
-                sourceMap: true,
-              },
+                sourceMap: true
+              }
             },
             {
               loader: "sass-loader",
               options: {
-                sourceMap: true,
-              },
-            },
-          ],
-        },
-      ],
+                sourceMap: true
+              }
+            }
+          ]
+        }
+      ]
     },
     node: {
-      fs: "empty",
+      fs: "empty"
     },
     plugins: [
       new Dotenv(),
@@ -66,13 +66,28 @@ module.exports = (env) => {
           "application-name": "Image Search App",
           // IOS compatible
           "apple-mobile-web-app-capable": "yes",
-          "apple-mobile-web-app-title": "Image Search App",
-        },
-      }),
+          "apple-mobile-web-app-title": "Image Search App"
+        }
+      })
     ],
     devtool: isProduction ? "source-map" : "inline-source-map",
-    devServer: {
-      contentBase: path.join(__dirname, "dist"),
+    resolve: {
+      alias: {
+        "@root": path.resolve(__dirname, "./"),
+        "@src": path.resolve(__dirname, "src/"),
+        "@actions": path.resolve(__dirname, "src/actions"),
+        "@comp": path.resolve(__dirname, "src/components"),
+        "@cont": path.resolve(__dirname, "src/containers"),
+        "@img": path.resolve(__dirname, "src/img"),
+        "@reducers": path.resolve(__dirname, "src/reducers"),
+        "@selectors": path.resolve(__dirname, "src/selectors"),
+        "@store": path.resolve(__dirname, "src/store"),
+        "@tests": path.resolve(__dirname, "src/tests"),
+        "@consts": path.resolve(__dirname, "src/constants")
+      }
     },
+    devServer: {
+      contentBase: path.join(__dirname, "dist")
+    }
   };
 };

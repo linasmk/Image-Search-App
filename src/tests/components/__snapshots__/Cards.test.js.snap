@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Cards component with images array correctly 1`] = `
+<div>
+  <section
+    className="card-list"
+  >
+    <div
+      className="card"
+      key="1"
+    >
+      <img
+        className="card--image"
+        height="50%"
+        onClick={[Function]}
+        role="presentation"
+        src="https://images.unsplash.com/photo-1552053831-71594a27632d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNzc2NzZ8MHwxfHNlYXJjaHwxfHxkb2d8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=400"
+        width="50%"
+      />
+      <CardModal
+        altDescription={null}
+        closeCardModal={[Function]}
+        download="https://unsplash.com/photos/Sg3XwuEpybU/download"
+        firstName="Martin"
+        imageID="1"
+        lastName="Weaver"
+        likes={505}
+        openCardModal={false}
+        urlsFull="https://images.unsplash.com/photo-1552053831-71594a27632d?crop=entropy&cs=srgb&fm=jpg&ixid=MXwxNzc2NzZ8MHwxfHNlYXJjaHwxfHxkb2d8ZW58MHx8fA&ixlib=rb-1.2.1&q=85"
+      />
+    </div>
+    <div
+      className="card"
+      key="2"
+    >
+      <img
+        className="card--image"
+        height="50%"
+        onClick={[Function]}
+        role="presentation"
+        src="https://images.unsplash.com/photo-1568595502714-5a8aa68c5fd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNzc2NzZ8MHwxfHNlYXJjaHwxfHxsZW1vbnxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=400"
+        width="50%"
+      />
+      <CardModal
+        altDescription={null}
+        closeCardModal={[Function]}
+        download="https://unsplash.com/photos/tP6ETrtLBWA/download"
+        firstName={null}
+        imageID="2"
+        lastName="Stalken"
+        likes={600}
+        openCardModal={false}
+        urlsFull="https://images.unsplash.com/photo-1568595502714-5a8aa68c5fd7?crop=entropy&cs=srgb&fm=jpg&ixid=MXwxNzc2NzZ8MHwxfHNlYXJjaHwxfHxsZW1vbnxlbnwwfHx8&ixlib=rb-1.2.1&q=85"
+      />
+    </div>
+    <div
+      className="card"
+      key="3"
+    >
+      <img
+        className="card--image"
+        height="50%"
+        onClick={[Function]}
+        role="presentation"
+        src="https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNzc2NzZ8MHwxfHNlYXJjaHwxfHxub3Rlc3xlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=400"
+        width="50%"
+      />
+      <CardModal
+        altDescription={null}
+        closeCardModal={[Function]}
+        download="https://unsplash.com/photos/_HtKNv8zs5s/download"
+        firstName="Robin"
+        imageID="3"
+        lastName="Tarver"
+        likes={900}
+        openCardModal={false}
+        urlsFull="https://images.unsplash.com/photo-1579208581155-feeb3bbb4e60?crop=entropy&cs=srgb&fm=jpg&ixid=MXwxNzc2NzZ8MHwxfHNlYXJjaHwxfHxub3RlfGVufDB8fHw&ixlib=rb-1.2.1&q=85"
+      />
+    </div>
+  </section>
+</div>
+`;
+
+exports[`renders Cards component with with empyt images array correctly 1`] = `
+<div>
+  <section
+    className="card-list"
+  />
+</div>
+`;

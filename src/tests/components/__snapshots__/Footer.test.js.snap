@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Footer component correctly 1`] = `
+<footer
+  className="footer"
+>
+  <h4
+    className="footer__copyright"
+  >
+    © 
+    2021
+     Linas Mackonis
+  </h4>
+</footer>
+`;

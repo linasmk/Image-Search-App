@@ -1,9 +1,9 @@
 /* ========= App Dependencies ============= */
 import React from "react";
 /* ========= Components ============= */
-import Header from "./Header";
-import { SearchImages } from "../containers/SearchImages";
-import Footer from "./Footer";
+import Header from "@comp/Header";
+import { SearchImages } from "@cont/SearchImages";
+import Footer from "@comp/Footer";
 /* ========= Code ============= */
 const ImageSearchApp = () => (
   <div className="image-search-app">

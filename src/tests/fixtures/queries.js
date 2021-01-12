@@ -1,15 +1,15 @@
 export default [
   {
     id: "1",
-    name: "dog",
+    name: "dog"
   },
   {
     id: "2",
-    name: "lemon",
+    name: "lemon"
   },
 
   {
     id: "3",
-    name: "notes",
-  },
+    name: "notes"
+  }
 ];

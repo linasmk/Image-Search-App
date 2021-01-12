@@ -1,14 +1,11 @@
 /* ========= Imports ============= */
-import { ADD_SAVED_QUERY } from "../actions/constants";
+import { ADD_SAVED_QUERY } from "@consts/constants";
 /* =================================================
 =========== SAVED QUERIES REDUCER ================
 ================================================= */
 const savedQueriesReducerDefaultState = [];
 export default (state = savedQueriesReducerDefaultState, action) => {
   switch (action.type) {
-    // case ADD_SAVED_QUERY:
-    //   return [...state, action.savedQuery];
-    // ===============================================
     case ADD_SAVED_QUERY:
       if (state.some((item) => item.name === action.savedQuery.name)) {
         return [...state];

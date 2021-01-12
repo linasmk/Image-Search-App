@@ -29,11 +29,13 @@ export const SavedQueryItem = ({ removeSavedQuery, onClick, name, id }) => {
     </div>
   );
 };
-
+SavedQueryItem.defaultProps = {
+  onClick: undefined
+};
 SavedQueryItem.propTypes = {
   removeSavedQuery: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 };
 export default SavedQueryItem;

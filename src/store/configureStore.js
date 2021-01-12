@@ -1,10 +1,11 @@
 /* ============= Redux  ============= */
-import { createStore, combineReducers } from "redux";
-import savedQueriesReducer from "../reducers/savedQueriesReducer";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import savedQueriesReducer from "@reducers/savedQueriesReducer";
+import reduxPromise from "redux-promise";
 /* =================================================
 =========== STORE CONFIGURATION ================
 ================================================= */
-// localStorage.clear();
+//localStorage.clear();
 function saveToLocalStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -24,14 +25,14 @@ function loadFromLocalStorage() {
   }
 }
 const rootReducer = combineReducers({
-  savedQueries: savedQueriesReducer,
+  savedQueries: savedQueriesReducer
 });
-
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistedState = loadFromLocalStorage();
 const store = createStore(
   rootReducer,
   persistedState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  composeEnhancer(applyMiddleware(reduxPromise))
 );
 store.subscribe(() => saveToLocalStorage(store.getState()));
 export default store;

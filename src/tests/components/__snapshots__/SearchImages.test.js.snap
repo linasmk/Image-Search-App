@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SearchImages component correctly 1`] = `
+<article
+  className="search-images"
+>
+  <form
+    className="search-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="search-form__input--wrapper"
+    >
+      <input
+        className="search-form__input"
+        name="query"
+        onChange={[Function]}
+        placeholder="Use keywords, ex: \\"phone\\""
+        type="text"
+        value=""
+      />
+      <button
+        className="search-form__btn--clear"
+        onClick={[Function]}
+        type="button"
+      >
+        X
+      </button>
+    </div>
+    <button
+      className="search-form__btn--submit"
+      type="submit"
+    >
+      Search
+    </button>
+    <span
+      className="search-form__warning"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    />
+  </form>
+  <Connect(SavedQueries)
+    onClick={[Function]}
+  />
+  <Cards
+    images={Array []}
+    noResultsError={false}
+    topLoader={false}
+  />
+  <Loader
+    bottomLoader={false}
+    display="none"
+  />
+  <section
+    className="load-more"
+  >
+    <div
+      className="load-more__inner-wrapper"
+    >
+      <p
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        Currently showing 
+        <span>
+          0
+        </span>
+         result
+         out of 
+        0
+      </p>
+      <button
+        className="load-more__btn"
+        disabled={true}
+        display="none"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+        type="button"
+      >
+        Load more
+      </button>
+    </div>
+  </section>
+</article>
+`;

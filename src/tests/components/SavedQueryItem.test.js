@@ -1,8 +1,9 @@
 /* ========= App Dependencies ============= */
 import React from "react";
 import { shallow } from "enzyme";
-import { SavedQueryItem } from "../../components/SavedQueryItem";
-import savedQueries from "../fixtures/savedQueries";
+import queries from "@tests/fixtures/queries";
+import { SavedQueryItem } from "@comp/SavedQueryItem";
+
 /* ========= Code ============= */
 let wrapper, removeSavedQuery, onClick;
 
@@ -11,18 +12,28 @@ beforeEach(() => {
   onClick = jest.fn();
   wrapper = shallow(
     <SavedQueryItem
-      id={savedQueries[0].id}
-      name={savedQueries[0].name}
+      id={queries[0].id}
+      name={queries[0].name}
       removeSavedQuery={removeSavedQuery}
       onClick={onClick}
-    />,
+    />
   );
 });
 
-it("renders SavedQueryItem correctly", () => {
+it("renders SavedQueryItem component correctly", () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it("handles removeSavedQuery", () => {
-  wrapper.find("button").simulate("click").prop("onClick")(savedQueries[0].id);
-});
+// it("handles handleChildQuery correctly", () => {
+//   wrapper.find("p").simulate("click", onClick("name"));
+//   wrapper.update();
+//   expect(wrapper.find("p").prop("onClick")).toEqual("dog");
+// });
+
+// it("handles removeSavedQuery", () => {
+//   expect(
+//     wrapper.find("button").simulate("click").prop("removeSavedQuery")(
+//       queries[0].id
+//     )
+//   ).toEqual(1);
+// });

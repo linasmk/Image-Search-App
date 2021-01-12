@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 /* ========= Code ============= */
-const Loader = ({ bottomLoader, display }) => (
+export const Loader = ({ bottomLoader, display }) => (
   <div className="loader-box">
     <div
       style={bottomLoader ? { display: "block" } : { display: display }}
@@ -12,9 +12,10 @@ const Loader = ({ bottomLoader, display }) => (
 );
 Loader.defaultProps = {
   bottomLoader: undefined,
+  display: undefined
 };
 Loader.propTypes = {
   bottomLoader: PropTypes.bool,
-  display: PropTypes.string.isRequired,
+  display: PropTypes.string
 };
 export default Loader;

@@ -1,4 +1,17 @@
 {
+  "moduleNameMapper": {
+    "@root/(.*)": "<rootDir>/$1",
+    "@src/(.*)": "<rootDir>/src/$1",
+    "@actions/(.*)": "<rootDir>/src/actions/$1",
+    "@comp/(.*)": "<rootDir>/src/components/$1",
+    "@cont/(.*)": "<rootDir>/src/containers/$1",
+    "@img/(.*)": "<rootDir>/src/img/$1",
+    "@reducers/(.*)": "<rootDir>/src/reducers/$1",
+    "@selectors/(.*)": "<rootDir>/src/selectors/$1",
+    "@store/(.*)": "<rootDir>/src/store/$1",
+    "@tests/(.*)": "<rootDir>/src/tests/$1",
+    "@consts/(.*)": "<rootDir>/src/constants/$1"
+  },
   "setupFiles": ["raf/polyfill", "<rootDir>/src/tests/setupTests.js"],
   "snapshotSerializers": ["enzyme-to-json/serializer"]
 }

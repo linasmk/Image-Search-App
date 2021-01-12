@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import Unsplash, { toJson } from "unsplash-js"; // eslint-disable-line no-unused-vars
 
 /* ========= Components =============== */
-import { SavedQueries } from "../containers/SavedQueries";
-import Cards from "./Cards";
-import Loader from "./Loader";
+import { SavedQueries } from "@cont/SavedQueries";
+import Cards from "@comp/Cards";
+import Loader from "@comp/Loader";
 
-import { UnsplashAccessKey } from "../../accessKey";
+import { UnsplashAccessKey } from "@root/accessKey";
 
 /* ========= Code ============= */
 export const SearchImages = ({ addSavedQuery }) => {
@@ -78,8 +78,7 @@ export const SearchImages = ({ addSavedQuery }) => {
     setQuery(newQuery);
     focusOnSearch.current.focus();
   }
-  const clearInputField = (e) => {
-    e.preventDefault();
+  const clearInputField = () => {
     setQuery("");
     focusOnSearch.current.focus();
   };
@@ -158,10 +157,10 @@ export const SearchImages = ({ addSavedQuery }) => {
 };
 
 SearchImages.defaultProps = {
-  addSavedQuery: undefined,
+  addSavedQuery: undefined
 };
 SearchImages.propTypes = {
-  addSavedQuery: PropTypes.func,
+  addSavedQuery: PropTypes.func
 };
 
 export default SearchImages;

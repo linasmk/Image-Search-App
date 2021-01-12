@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 /* ========= Components =============== */
-import CardModal from "./CardModal";
-import Loader from "./Loader";
+import CardModal from "@comp/CardModal";
+import Loader from "@comp/Loader";
 /* ========= Code ============= */
 
-const Cards = ({ images, topLoader, noResultsError }) => {
+export const Cards = ({ images, topLoader, noResultsError }) => {
   const [cardModalId, setCardModalId] = useState(undefined);
   const openCardModal = (id) => setCardModalId(id);
   const closeCardModal = () => setCardModalId(undefined);
@@ -54,9 +54,14 @@ const Cards = ({ images, topLoader, noResultsError }) => {
     </div>
   );
 };
+Cards.defaultProps = {
+  images: undefined,
+  topLoader: false,
+  noResultsError: false
+};
 Cards.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
-  topLoader: PropTypes.bool.isRequired,
-  noResultsError: PropTypes.bool.isRequired,
+  images: PropTypes.arrayOf(PropTypes.object),
+  topLoader: PropTypes.bool,
+  noResultsError: PropTypes.bool
 };
 export default Cards;
