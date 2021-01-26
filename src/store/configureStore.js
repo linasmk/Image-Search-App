@@ -1,11 +1,12 @@
 /* ============= Redux  ============= */
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import savedQueriesReducer from "@reducers/savedQueriesReducer";
+import imagesReducer from "@reducers/imagesReducer";
 import reduxPromise from "redux-promise";
 /* =================================================
 =========== STORE CONFIGURATION ================
 ================================================= */
-//localStorage.clear();
+// localStorage.clear();
 function saveToLocalStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -25,7 +26,8 @@ function loadFromLocalStorage() {
   }
 }
 const rootReducer = combineReducers({
-  savedQueries: savedQueriesReducer
+  savedQueries: savedQueriesReducer,
+  images: imagesReducer
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistedState = loadFromLocalStorage();

@@ -7,5 +7,5 @@ import SavedQueriesComponent from "@comp/SavedQueries";
 
 /* ========= Code ========= */
 export const SavedQueries = connect((state) => ({
-  savedQueries: latestQueryFirst(state.savedQueries),
+  savedQueries: latestQueryFirst(state.savedQueries)
 }))(SavedQueriesComponent);

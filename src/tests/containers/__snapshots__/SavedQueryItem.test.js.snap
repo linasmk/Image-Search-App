@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SavedQueryItem container renders SavedQueryItem container correctly 1`] = `
+<Root>
+  <Provider
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+  >
+    <Connect(SavedQueryItem)
+      id="1"
+      name="dog"
+      onClick={[MockFunction]}
+      removeSavedQuery={[MockFunction]}
+    >
+      <SavedQueryItem
+        id="1"
+        name="dog"
+        onClick={[MockFunction]}
+        removeSavedQuery={[Function]}
+      >
+        <div
+          className="saved-queries__item"
+        >
+          <p
+            className="saved-queries__txt"
+            onClick={[Function]}
+            role="presentation"
+          >
+            dog
+          </p>
+          <button
+            className="saved-queries__btn--remove"
+            onClick={[Function]}
+            type="button"
+          >
+            X
+          </button>
+        </div>
+      </SavedQueryItem>
+    </Connect(SavedQueryItem)>
+  </Provider>
+</Root>
+`;

@@ -7,9 +7,9 @@ export const SavedQueryItem = ({ removeSavedQuery, onClick, name, id }) => {
   /* ========== Functions ========== */
   const removeQuery = () => removeSavedQuery({ id });
 
-  function handleChildQuery(e) {
+  const handleChildQuery = (e) => {
     onClick(e.target.textContent);
-  }
+  };
 
   /* ========== Content ========== */
   return (
@@ -30,10 +30,11 @@ export const SavedQueryItem = ({ removeSavedQuery, onClick, name, id }) => {
   );
 };
 SavedQueryItem.defaultProps = {
-  onClick: undefined
+  onClick: undefined,
+  removeSavedQuery: undefined
 };
 SavedQueryItem.propTypes = {
-  removeSavedQuery: PropTypes.func.isRequired,
+  removeSavedQuery: PropTypes.func,
   onClick: PropTypes.func,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired

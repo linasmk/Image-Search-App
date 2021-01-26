@@ -11,7 +11,7 @@ import Loader from "@comp/Loader";
 import { UnsplashAccessKey } from "@root/accessKey";
 
 /* ========= Code ============= */
-export const SearchImages = ({ addSavedQuery }) => {
+export const SearchImages = ({ addSavedQuery, getImages }) => {
   // ================ Hooks ==============
   const [query, setQuery] = useState("");
   const [images, setImages] = useState([]);
@@ -70,18 +70,22 @@ export const SearchImages = ({ addSavedQuery }) => {
   useEffect(() => {
     updatePhotos(pageNumber);
   }, [pageNumber]);
+
   const loadMore = () => {
     setPageNumber((prevPageNumber) => prevPageNumber + 1);
     setBottomLoader(true);
   };
-  function handleChildQuery(newQuery) {
+
+  const handleChildQuery = (newQuery) => {
     setQuery(newQuery);
     focusOnSearch.current.focus();
-  }
+  };
+
   const clearInputField = () => {
     setQuery("");
     focusOnSearch.current.focus();
   };
+
   return (
     <article className="search-images">
       <form className="search-form" onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import { addSavedQuery, removeSavedQuery } from "@actions/savedQueries";
+import { addSavedQuery, removeSavedQuery } from "@actions/action-creators";
 import { ADD_SAVED_QUERY, REMOVE_SAVED_QUERY } from "@consts/constants";
 
 describe("removeSavedQuery", () => {
